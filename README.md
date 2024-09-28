@@ -57,7 +57,7 @@ Para rodar a instância do MySQL usando Docker, siga os passos abaixo:
    ```
 2. Rode o container do MySQL:
    ```bash
-   docker run --name mysql-todo-list -e MYSQL_ROOT_PASSWORD=sua_senha -e MYSQL_DATABASE=nome_database -p 3306:3306 -d mysql:latest
+   docker run --name mysql-container-todolist -e MYSQL_ROOT_PASSWORD=sua_senha -e MYSQL_USER=seu_usuario -e MYSQL_DATABASE=nome_database -p 3306:3306 -d mysql:latest
    ```
 
 ## Como Funciona o Fluxo e as Responsabilidades
