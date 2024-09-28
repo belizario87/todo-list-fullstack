@@ -1,14 +1,16 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
+require("dotenv").config();
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
+  waitForConnections: true,
 });
 
-connection.connect(() => {
-  console.log("Conectado ao banco de dados com ID", connection.threadId);
-});
+async function getConnection() {
+  return await pool.getConnection();
+}
 
-module.exports = connection;
+module.exports = getConnection;
